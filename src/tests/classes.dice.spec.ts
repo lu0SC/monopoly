@@ -20,7 +20,7 @@ describe('classes.spaces', () => {
         expect(d.d1).toBeLessThanOrEqual(6);
         expect(d.d2).toBeLessThanOrEqual(6);
     }));
-    fit('If both di rolls are the same, user gets another roll', async(() => {
+    it('If both di rolls are the same, user gets another roll', async(() => {
         // ARRANGE
         const d = new Dice();
         let spy = spyOn(d, "roll").and.callThrough();
