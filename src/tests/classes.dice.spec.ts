@@ -21,22 +21,21 @@ describe('classes.spaces', () => {
         expect(d.d2).toBeLessThanOrEqual(6);
     }));
     fit('If both di rolls are the same, user gets another roll', async(() => {
-        // arrange
+        // ARRANGE
         const d = new Dice();
         let spy = spyOn(d, "roll").and.callThrough();
-        let spy2 = spyOn(d, "d1");
-        // act
-        d.roll();
-        // assert
-        if(d.d1 == d.d2){
-            expect(spy).toHaveBeenCalledTimes(2);
-            // expect(spy2).toHaveBeenCalledTimes(2);
+
+        // ACT
+        const doublesRolledTF = d.roll();
+
+        // ASSERT
+        //console.log("COUNT", spy.calls.count());
+        if(doublesRolledTF){
+            expect(spy.calls.count()).toBeGreaterThanOrEqual(2);
         }
         else{
             expect(spy).toHaveBeenCalledTimes(1);
-            // expect(spy2).toHaveBeenCalledTimes(1);
         }
-        // expect(d.isSame).toEqual(true);
     }));
 
 });
